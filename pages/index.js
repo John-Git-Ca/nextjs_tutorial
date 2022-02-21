@@ -45,12 +45,11 @@ const HomePage = (props) => {
 
 export const getStaticProps = async () => {
 
-  const client = await MongoClient.connect('mongodb://localhost:27017/nexttutorial')
+  const client = await MongoClient.connect('mongodb+srv://john:mongo12345@cluster0.hyylr.mongodb.net/nexttutorial?retryWrites=true&w=majority')
   const db = client.db()
 
   const meetupCollection = db.collection('nexttutorial')
   const meetups = await meetupCollection.find().toArray()
-  console.log(meetups)
   client.close()
 
   return {
